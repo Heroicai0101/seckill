@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <springProperty scope="context" name="root.log.level" source="root.log.level"/>
+    <springProperty scope="context" name="root.log.path" source="root.log.path"/>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%level][%d{yyyy-MM-dd HH:mm:ss}][%thread:%file:%line] %msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+    <appender name="ROOT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${root.log.path}/seckill.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${root.log.path}/seckill.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%level][%d{yyyy-MM-dd HH:mm:ss}][%thread:%file:%line] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="SPRING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${root.log.path}/seckill-api.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${root.log.path}/seckill-api.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%level][%d{yyyy-MM-dd HH:mm:ss}][%thread:%file:%line] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="${root.log.level}">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ROOT_FILE" />
+    </root>
+
+    <logger name="api_logger" additivity="false" level="${root.log.level}">
+        <appender-ref ref="SPRING_FILE" />
+    </logger>
+  
+</configuration>
