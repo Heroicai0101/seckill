@@ -4,7 +4,7 @@
 
 - [一个极简、高效的秒杀系统-战略设计篇](https://blog.csdn.net/caiguoxiong0101/article/details/104866073) 
 
-- [一个极简、高效的秒杀系统-战术实践篇(内附源码)](https://blog.csdn.net/caiguoxiong0101/article/details/104866073) 
+- [一个极简、高效的秒杀系统-战术实践篇(内附源码)](https://blog.csdn.net/caiguoxiong0101/article/details/105034759) 
 
 ### 二、环境准备
 1、启动本机redis
